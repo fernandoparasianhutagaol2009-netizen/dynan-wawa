@@ -1,57 +1,64 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynan ❤️ Wawa</title>
-
+<title>Ungkapan Hati Dynan</title>
 
 <style>
+
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:Georgia;
+background: radial-gradient(circle at bottom,#020111,#000000);
 color:white;
-text-align:center;
-height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+height:100vh;
 overflow:hidden;
-background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+text-align:center;
 }
 
-
-.container{
-max-width:700px;
-padding:20px;
-z-index:2;
+/* halaman */
+.page{
+display:none;
+max-width:650px;
+padding:25px;
 }
 
+.active{
+display:block;
+}
+
+/* surat */
+.envelope{
+background:white;
+color:black;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 30px rgba(255,255,255,0.3);
+animation:open 2s ease;
+}
+
+@keyframes open{
+from{transform:scale(0.8);opacity:0}
+to{transform:scale(1);opacity:1}
+}
 
 h1{
-font-size:40px;
-margin-bottom:20px;
+color:#ff4d6d;
 }
 
-
-p{
-font-size:18px;
-line-height:1.6;
-opacity:0;
-animation:fade 3s forwards;
+button{
+margin-top:20px;
+padding:12px 25px;
+font-size:16px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
 }
-
-
-p:nth-child(2){animation-delay:1s}
-p:nth-child(3){animation-delay:2s}
-p:nth-child(4){animation-delay:3s}
-
-
-@keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-
 
 /* bintang */
 .star{
@@ -62,78 +69,189 @@ background:white;
 animation:twinkle 2s infinite alternate;
 }
 
-
 @keyframes twinkle{
 from{opacity:0.2}
 to{opacity:1}
 }
+
+/* love jatuh */
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
+}
+
 </style>
 </head>
 
-
 <body>
 
+<!-- halaman pembuka -->
+<div class="page active">
 
-<div class="container">
-<h1>Dynan ❤️ Wawa</h1>
+<div class="envelope">
 
-
-<p>Wawa, aku cuma ingin kamu tahu satu hal.</p>
-
+<h1>❤️ Ungkapan Hati Dynan ❤️</h1>
 
 <p>
-Aku sayang sama kamu, bukan karena sesuatu yang kamu punya,
-tapi karena kamu adalah kamu.
+Ada sebuah surat kecil yang ingin aku
+sampaikan untukmu.
+
+Putar dulu musiknya,
+lalu buka surat ini agar kamu bisa
+membacanya dengan perasaan.
 </p>
 
+<button onclick="bukaSurat()">Putar Musik & Buka Surat</button>
 
-<p>
+</div>
+
+</div>
+
+
+<!-- halaman 1 -->
+<div class="page" id="page1">
+
+<h1>Untuk Wawa</h1>
+
+<p style="text-align:left">
+
+Wawa,
+
+Aku menulis ini bukan karena aku pandai
+merangkai kata, tapi karena ada sesuatu
+di hatiku yang ingin kamu tahu.
+
+Sejak aku mengenal kamu,
+hari-hariku terasa berbeda.
+
+Ada senyum yang datang tanpa alasan,
+dan ada rasa hangat setiap kali
+aku berbicara denganmu.
+
+</p>
+
+<button onclick="nextPage()">Lanjut</button>
+
+</div>
+
+
+<!-- halaman 2 -->
+<div class="page" id="page2">
+
+<h1>Perasaan Dynan</h1>
+
+<p style="text-align:left">
+
 Aku mungkin bukan orang yang sempurna,
-tapi aku berjanji akan selalu berusaha
-menjaga kamu, menghargai kamu,
-dan tetap ada untuk kamu.
+dan aku punya banyak kekurangan.
+
+Tapi satu hal yang bisa aku pastikan,
+perasaanku untukmu benar-benar tulus.
+
+Aku ingin tetap ada,
+mendengarkan ceritamu,
+dan tertawa bersamamu.
+
 </p>
 
+<button onclick="nextPage()">Lanjut</button>
 
-<p>
+</div>
+
+
+<!-- halaman 3 -->
+<div class="page" id="page3">
+
+<h1>Janji Dynan</h1>
+
+<p style="text-align:left">
+
+Jika suatu hari nanti dunia terasa berat,
+ingatlah bahwa ada seseorang di sini
+yang selalu ingin melihatmu bahagia.
+
 Selama aku masih bisa,
-aku tidak akan meninggalkan kamu.
+aku tidak ingin meninggalkanmu.
+
+Aku ingin tetap ada,
+menjaga kamu,
+dan berjalan bersamamu.
+
 </p>
-
-
-<p style="margin-top:30px;font-size:14px;opacity:0.7;">
-(sentuh layar agar musik mulai)
-</p>
-
 
 </div>
 
 
 <audio id="musik" loop>
-<source src="https://files.catbox.moe/9p1q8a.mp3" type="audio/mpeg">
+<source src="lagu.mp3" type="audio/mpeg">
 </audio>
 
 
 <script>
-const musik = document.getElementById("musik");
 
+function bukaSurat(){
 
-document.addEventListener("click", function(){
-musik.play();
-},{once:true});
+document.getElementById("musik").play();
 
+document.querySelector(".active").classList.remove("active");
+document.getElementById("page1").classList.add("active");
 
-// buat bintang
+}
+
+function nextPage(){
+
+let pages=document.querySelectorAll(".page");
+
+for(let i=0;i<pages.length;i++){
+
+if(pages[i].classList.contains("active")){
+
+pages[i].classList.remove("active");
+
+pages[i+1].classList.add("active");
+
+break;
+
+}
+
+}
+
+}
+
+/* bintang */
 for(let i=0;i<120;i++){
+
 let star=document.createElement("div");
 star.className="star";
 star.style.left=Math.random()*100+"vw";
 star.style.top=Math.random()*100+"vh";
-star.style.animationDelay=Math.random()*2+"s";
+
 document.body.appendChild(star);
+
 }
+
+/* love jatuh */
+for(let i=0;i<30;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*5+5)+"s";
+
+document.body.appendChild(heart);
+
+}
+
 </script>
 
-
 </body>
-</html>
+  </html>
