@@ -1,173 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Ungkapan Hati Dynan</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Georgia;
-background: radial-gradient(circle at bottom,#020111,#000000);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-overflow:hidden;
-text-align:center;
-}
-
-/* halaman */
-.page{
-display:none;
-max-width:650px;
-padding:25px;
-}
-
-.active{
-display:block;
-}
-
-/* surat */
-.envelope{
-background:white;
-color:black;
-padding:40px;
-border-radius:10px;
-box-shadow:0 0 30px rgba(255,255,255,0.3);
-animation:open 2s ease;
-}
-
-@keyframes open{
-from{transform:scale(0.8);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-h1{
-color:#ff4d6d;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-font-size:16px;
-border:none;
-border-radius:10px;
-background:#ff4d6d;
-color:white;
-cursor:pointer;
-}
-
-/* bintang */
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-from{opacity:0.2}
-to{opacity:1}
-}
-
-/* love jatuh */
-.heart{
-position:absolute;
-color:red;
-font-size:20px;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh)}
-100%{transform:translateY(110vh)}
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- halaman pembuka -->
-<div class="page active">
-
-<div class="envelope">
-
-<h1>❤️ Ungkapan Hati Dynan ❤️</h1>
-
-<p>
-Ada sebuah surat kecil yang ingin aku
-sampaikan untukmu.
-
-Putar dulu musiknya,
-lalu buka surat ini agar kamu bisa
-membacanya dengan perasaan.
-</p>
-
-<button onclick="bukaSurat()">Putar Musik & Buka Surat</button>
-
-</div>
-
-</div>
-
-
-<!-- halaman 1 -->
-<div class="page" id="page1">
-
-<h1>Untuk Wawa</h1>
-
-<p style="text-align:left">
-
-Wawa,
-
-Aku menulis ini bukan karena aku pandai
-merangkai kata, tapi karena ada sesuatu
-di hatiku yang ingin kamu tahu.
-
-Sejak aku mengenal kamu,
-hari-hariku terasa berbeda.
-
-Ada senyum yang datang tanpa alasan,
-dan ada rasa hangat setiap kali
-aku berbicara denganmu.
-
-</p>
-
-<button onclick="nextPage()">Lanjut</button>
-
-</div>
-
-
-<!-- halaman 2 -->
-<div class="page" id="page2">
-
-<h1>Perasaan Dynan</h1>
-
-<p style="text-align:left">
-
-Aku mungkin bukan orang yang sempurna,
-dan aku punya banyak kekurangan.
-
-Tapi satu hal yang bisa aku pastikan,
-perasaanku untukmu benar-benar tulus.
-
-Aku ingin tetap ada,
-mendengarkan ceritamu,
-dan tertawa bersamamu.
-
-</p>
-
-<button onclick="nextPage()">Lanjut</button>
-
-</div>
-
-
-<!-- halaman 3 -->
-<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -182,16 +13,19 @@ font-family:Arial;
 background:linear-gradient(#020224,#000010);
 color:white;
 text-align:center;
-overflow:hidden;
 }
 
 /* bintang */
 .stars{
 position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
 background:url("https://i.imgur.com/YKY28eT.png");
 animation:starsMove 80s linear infinite;
+z-index:-1;
+pointer-events:none;
 }
 
 @keyframes starsMove{
@@ -201,12 +35,11 @@ to{background-position:10000px 5000px;}
 
 /* container */
 .container{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+margin-top:120px;
 width:90%;
 max-width:500px;
+margin-left:auto;
+margin-right:auto;
 }
 
 /* surat */
@@ -236,7 +69,10 @@ animation:beat 1s infinite;
 .page{
 display:none;
 font-size:18px;
-line-height:1.6;
+line-height:1.7;
+background:rgba(0,0,0,0.5);
+padding:25px;
+border-radius:15px;
 }
 
 /* tombol */
@@ -262,14 +98,12 @@ background:#ff1e4d;
 
 <div class="stars"></div>
 
-<!-- lagu -->
 <audio id="music">
 <source src="dynan.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
 
-<!-- halaman surat -->
 <div id="cover" class="envelope" onclick="openLetter()">
 
 <div class="heart">❤️</div>
@@ -280,32 +114,27 @@ background:#ff1e4d;
 
 </div>
 
-
-<!-- halaman 1 -->
 <div id="page1" class="page">
 
 <h2>Untuk Wawa</h2>
 
 <p>
-Wawa, mungkin kata-kata ini sederhana,
-tapi semuanya datang dari hati Dynan.
-Sejak kamu hadir dalam hidup Dynan,
-hari-hari terasa lebih hangat
-dan dunia terasa sedikit lebih indah.
+Wawa, sejak kamu hadir dalam hidup Dynan,
+hari-hari terasa berbeda. Hal kecil terasa
+lebih berarti, dan senyum kamu selalu
+membuat hati ini hangat.
 </p>
 
 <p>
-Dynan tidak selalu pandai merangkai kata,
-tapi satu hal yang ingin Dynan sampaikan,
-Dynan benar-benar menyayangi kamu.
+Dynan mungkin tidak selalu pandai berkata,
+tapi Dynan ingin kamu tahu bahwa
+Dynan sangat menyayangi kamu.
 </p>
 
 <button onclick="nextPage(2)">Lanjut ➜</button>
 
 </div>
 
-
-<!-- halaman 2 -->
 <div id="page2" class="page">
 
 <h2>Janji Dynan</h2>
@@ -313,13 +142,13 @@ Dynan benar-benar menyayangi kamu.
 <p>
 Dynan mungkin bukan orang yang sempurna,
 tapi Dynan ingin selalu berusaha
-menjadi seseorang yang bisa
-membuat Wawa tersenyum.
+menjadi seseorang yang bisa membuat
+Wawa merasa dihargai dan disayangi.
 </p>
 
 <p>
-Dynan berjanji akan menjaga perasaan ini,
-menyayangi kamu dengan tulus,
+Selama kamu masih di sini,
+Dynan akan menjaga perasaan ini
 dan tidak akan meninggalkan kamu
 tanpa alasan.
 </p>
@@ -328,22 +157,19 @@ tanpa alasan.
 
 </div>
 
-
-<!-- halaman 3 -->
 <div id="page3" class="page">
 
 <h2>Terima Kasih Wawa</h2>
 
 <p>
 Terima kasih sudah hadir dalam hidup Dynan.
-Terima kasih sudah menjadi seseorang
-yang begitu berarti.
+Kehadiran kamu membuat semuanya terasa
+lebih berarti.
 </p>
 
 <p>
-Selama kamu ada,
-Dynan akan selalu punya alasan
-untuk tersenyum.
+Semoga cerita Dynan dan Wawa
+bisa terus berjalan lama.
 </p>
 
 <h3>❤️ Dynan & Wawa ❤️</h3>
@@ -352,10 +178,7 @@ untuk tersenyum.
 
 </div>
 
-
 <script>
-
-/* buka surat + play lagu */
 
 function openLetter(){
 
@@ -367,11 +190,11 @@ document.getElementById("music").play();
 
 }
 
-/* pindah halaman */
-
 function nextPage(n){
 
-document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="none";
+document.getElementById("page3").style.display="none";
 
 document.getElementById("page"+n).style.display="block";
 
@@ -380,4 +203,5 @@ document.getElementById("page"+n).style.display="block";
 </script>
 
 </body>
-  </html>
+</html>
+
