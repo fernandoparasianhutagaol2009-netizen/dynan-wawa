@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynan ❤️ Wawa</title>
+
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+color:white;
+text-align:center;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+}
+
+
+.container{
+max-width:700px;
+padding:20px;
+z-index:2;
+}
+
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+
+p{
+font-size:18px;
+line-height:1.6;
+opacity:0;
+animation:fade 3s forwards;
+}
+
+
+p:nth-child(2){animation-delay:1s}
+p:nth-child(3){animation-delay:2s}
+p:nth-child(4){animation-delay:3s}
+
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+
+/* bintang */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
+}
+
+
+@keyframes twinkle{
+from{opacity:0.2}
+to{opacity:1}
+}
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+<h1>Dynan ❤️ Wawa</h1>
+
+
+<p>Wawa, aku cuma ingin kamu tahu satu hal.</p>
+
+
+<p>
+Aku sayang sama kamu, bukan karena sesuatu yang kamu punya,
+tapi karena kamu adalah kamu.
+</p>
+
+
+<p>
+Aku mungkin bukan orang yang sempurna,
+tapi aku berjanji akan selalu berusaha
+menjaga kamu, menghargai kamu,
+dan tetap ada untuk kamu.
+</p>
+
+
+<p>
+Selama aku masih bisa,
+aku tidak akan meninggalkan kamu.
+</p>
+
+
+<p style="margin-top:30px;font-size:14px;opacity:0.7;">
+(sentuh layar agar musik mulai)
+</p>
+
+
+</div>
+
+
+<audio id="musik" loop>
+<source src="https://files.catbox.moe/9p1q8a.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+const musik = document.getElementById("musik");
+
+
+document.addEventListener("click", function(){
+musik.play();
+},{once:true});
+
+
+// buat bintang
+for(let i=0;i<120;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDelay=Math.random()*2+"s";
+document.body.appendChild(star);
+}
+</script>
+
+
+</body>
+</html>
