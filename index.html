@@ -167,87 +167,213 @@ dan tertawa bersamamu.
 
 
 <!-- halaman 3 -->
-<div class="page" id="page3">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynan ❤️ Wawa</title>
 
-<h1>Janji Dynan</h1>
+<style>
 
-<p style="text-align:left">
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(#020224,#000010);
+color:white;
+text-align:center;
+overflow:hidden;
+}
 
-Jika suatu hari nanti dunia terasa berat,
-ingatlah bahwa ada seseorang di sini
-yang selalu ingin melihatmu bahagia.
+/* bintang */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://i.imgur.com/YKY28eT.png");
+animation:starsMove 80s linear infinite;
+}
 
-Selama aku masih bisa,
-aku tidak ingin meninggalkanmu.
+@keyframes starsMove{
+from{background-position:0 0;}
+to{background-position:10000px 5000px;}
+}
 
-Aku ingin tetap ada,
-menjaga kamu,
-dan berjalan bersamamu.
+/* container */
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90%;
+max-width:500px;
+}
 
-</p>
+/* surat */
+.envelope{
+background:white;
+color:black;
+padding:30px;
+border-radius:15px;
+cursor:pointer;
+box-shadow:0 0 20px rgba(255,255,255,0.5);
+}
+
+/* love */
+.heart{
+font-size:45px;
+color:red;
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+/* halaman */
+.page{
+display:none;
+font-size:18px;
+line-height:1.6;
+}
+
+/* tombol */
+button{
+margin-top:20px;
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff1e4d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- lagu -->
+<audio id="music">
+<source src="dynan.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<!-- halaman surat -->
+<div id="cover" class="envelope" onclick="openLetter()">
+
+<div class="heart">❤️</div>
+
+<h2>Ungkapan Hati Dynan</h2>
+
+<p>Sentuh untuk membuka surat</p>
 
 </div>
 
 
-<audio id="musik" loop>
-<source src="lagu.mp3" type="audio/mpeg">
-</audio>
+<!-- halaman 1 -->
+<div id="page1" class="page">
+
+<h2>Untuk Wawa</h2>
+
+<p>
+Wawa, mungkin kata-kata ini sederhana,
+tapi semuanya datang dari hati Dynan.
+Sejak kamu hadir dalam hidup Dynan,
+hari-hari terasa lebih hangat
+dan dunia terasa sedikit lebih indah.
+</p>
+
+<p>
+Dynan tidak selalu pandai merangkai kata,
+tapi satu hal yang ingin Dynan sampaikan,
+Dynan benar-benar menyayangi kamu.
+</p>
+
+<button onclick="nextPage(2)">Lanjut ➜</button>
+
+</div>
+
+
+<!-- halaman 2 -->
+<div id="page2" class="page">
+
+<h2>Janji Dynan</h2>
+
+<p>
+Dynan mungkin bukan orang yang sempurna,
+tapi Dynan ingin selalu berusaha
+menjadi seseorang yang bisa
+membuat Wawa tersenyum.
+</p>
+
+<p>
+Dynan berjanji akan menjaga perasaan ini,
+menyayangi kamu dengan tulus,
+dan tidak akan meninggalkan kamu
+tanpa alasan.
+</p>
+
+<button onclick="nextPage(3)">Lanjut ➜</button>
+
+</div>
+
+
+<!-- halaman 3 -->
+<div id="page3" class="page">
+
+<h2>Terima Kasih Wawa</h2>
+
+<p>
+Terima kasih sudah hadir dalam hidup Dynan.
+Terima kasih sudah menjadi seseorang
+yang begitu berarti.
+</p>
+
+<p>
+Selama kamu ada,
+Dynan akan selalu punya alasan
+untuk tersenyum.
+</p>
+
+<h3>❤️ Dynan & Wawa ❤️</h3>
+
+</div>
+
+</div>
 
 
 <script>
 
-function bukaSurat(){
+/* buka surat + play lagu */
 
-document.getElementById("musik").play();
+function openLetter(){
 
-document.querySelector(".active").classList.remove("active");
-document.getElementById("page1").classList.add("active");
+document.getElementById("cover").style.display="none";
 
-}
+document.getElementById("page1").style.display="block";
 
-function nextPage(){
-
-let pages=document.querySelectorAll(".page");
-
-for(let i=0;i<pages.length;i++){
-
-if(pages[i].classList.contains("active")){
-
-pages[i].classList.remove("active");
-
-pages[i+1].classList.add("active");
-
-break;
+document.getElementById("music").play();
 
 }
 
-}
+/* pindah halaman */
 
-}
+function nextPage(n){
 
-/* bintang */
-for(let i=0;i<120;i++){
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 
-let star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"vw";
-star.style.top=Math.random()*100+"vh";
-
-document.body.appendChild(star);
-
-}
-
-/* love jatuh */
-for(let i=0;i<30;i++){
-
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤";
-
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*5+5)+"s";
-
-document.body.appendChild(heart);
+document.getElementById("page"+n).style.display="block";
 
 }
 
